@@ -63,6 +63,38 @@ public:
         }
         return false;
     }
+
+    void insertar(string valor, int posicion)
+    {
+        Nodo *nuevo = new Nodo(valor);
+        Nodo *iterador = inicio;
+
+        if(posicion == 0)
+        {
+            nuevo->siguiente = inicio;
+            inicio = nuevo;
+        }else
+        {
+            for(int i=0; i<posicion-1; i++)
+            {
+                iterador = iterador->siguiente;
+                if(iterador == NULL)
+                    return;
+            }
+
+            nuevo->siguiente = iterador->siguiente;
+            iterador->siguiente = nuevo;
+        }
+    }
+
+    void borrar(int posicion)
+    {
+        Nodo* iterador = inicio;
+        for (int i = 0; i < posicion-1 ; ++i) {
+            
+
+        }
+    }
 };
 
 int main()
@@ -73,11 +105,8 @@ int main()
     mi_lista.agregar("C");
     mi_lista.agregar("D");
     mi_lista.agregar("E");
+    mi_lista.insertar("X",0);
     mi_lista.imprimir();
-    cout<<mi_lista.existe("A")<<endl;
-    cout<<mi_lista.existe("D")<<endl;
-    cout<<mi_lista.existe("X")<<endl;
-    cout<<mi_lista.existe("W")<<endl;
 
     return 0;
 }
